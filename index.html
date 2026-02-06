@@ -41,7 +41,6 @@ animation:fall linear infinite;
 @keyframes fall{
 to{transform:translateY(100vh);}
 }
-/* Style for typing text to keep spacing */
 #typing-area {
     white-space: pre-wrap; 
     font-size: 18px;
@@ -53,7 +52,7 @@ to{transform:translateY(100vh);}
 <body>
 
 <audio id="myAudio" loop>
-<source src="Maaya (Official Lyrical Video)(MP3_160K).mp3." type="audio/mpeg">
+<source src="Varsha Thapa - Maaya (Official Lyrical Video)(MP3_160K).mp3" type="audio/mpeg">
 </audio>
 
 <div class="card">
@@ -70,7 +69,7 @@ to{transform:translateY(100vh);}
 
 <div id="stage3" style="display:none;">
     <div id="typing-area"></div>
-    <img id="cuteGif" src="https://media.tenor.com/Q0Z9ZfF5zYcAAAAi/cute-love.gif" width="150" style="display:none;">
+    <img id="cuteGif" src="https://media.tenor.com/Q0Z9ZfF5zYcAAAAi/cute-love.gif" width="150" style="display:none; margin: 0 auto;">
 </div>
 </div>
 
@@ -104,7 +103,6 @@ document.getElementById("stage3").style.display="block";
 startTyping();
 }
 
-// THE ENTIRE MESSAGE IN ONE VARIABLE
 const fullText = "I knew you'd say yes 🤍\n\nभावनाले लेखेको तिमी एक सुन्दर कविता 🤍\nम त खाली एक पाना बनेको तिमीले भरिजान ।\n\nI love you dherai dherai ❤️";
 
 let charIndex = 0;
@@ -112,10 +110,12 @@ function startTyping(){
     if(charIndex < fullText.length){
         document.getElementById("typing-area").innerHTML += fullText.charAt(charIndex);
         charIndex++;
-        setTimeout(startTyping, 70); // Adjust speed here
+        setTimeout(startTyping, 70); 
     } else {
-        // Show GIF ONLY after typing finishes
-        document.getElementById("cuteGif").style.display = "inline-block";
+        // FIXED: This line now correctly triggers the GIF to show up!
+        setTimeout(() => {
+            document.getElementById("cuteGif").style.display = "block";
+        }, 500); 
     }
 }
 
